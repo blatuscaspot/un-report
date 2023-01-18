@@ -18,13 +18,12 @@ This report was prepared to the attention of the United Nations. It analyzes the
 ``` {r read-data}
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 ```
-```{r gdp-lifeExp-1997-plot}
+```{r gdp-lifeExp-1997-plot, echo = FALSE, width = 6, height = 4, dpi = 300}
 # make plot of GDP (x-axis) vs lifeExp (y-axis)
 ggplot(gapminder_1997)+
   aes(x = gdpPercap, y = lifeExp, color = continent)+
   labs(x = "GDP Per Capita", y = "Life Expectancy (Years)", title = "Relationship between Life Expectancy and GDP")+
   geom_point()+
-  geom_smooth(method = "lm", se = TRUE)+
     theme_classic()+
     scale_color_brewer(palette = "Set1")
 ```
