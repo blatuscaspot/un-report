@@ -54,4 +54,4 @@ gapminder_1997 %>%
   filter(continent == "Oceania") %>%
   kable()
 ```
-
+This is the end!
