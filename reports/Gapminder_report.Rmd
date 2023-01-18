@@ -3,6 +3,8 @@ title: "A UN Report on the Relationship between GDP and CO2 Emissions"
 author: "Ben K"
 date: "2023-01-18"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r load-packages}
 library(tidyverse)
-library(rstatix)
+library(knitr)
 ```
 This report was prepared to the attention of the United Nations. It analyzes the relationship between a country's GDP, its life expectancy and CO2 emissions. Our goal is to determine to what degree a country’s economic strength or weakness may be related to its public health status and impact on climate pollution. We hypothesize that both life expectancy and CO2 emissions increase with a country's GDP.
 
@@ -26,5 +28,30 @@ ggplot(gapminder_1997)+
   geom_point()+
     theme_classic()+
     scale_color_brewer(palette = "Set1")
+```
+
+
+``` {r basic-country-stats}
+# Number of countries in dataset
+nCountries <- 
+  gapminder_1997%>%
+  select(country)%>%
+  n_distinct()
+
+# minimum GDP
+minGDP <- gapminder_1997%>%
+  summarize(round(min(gdpPercap))) %>%
+  pull()
+
+maxGDP <- gapminder_1997 %>%
+  summarize(round(max(gdpPercap)))%>%
+  pull()
+```
+
+The number of countries in the dataset is `r nCountries`. The minimum GDP is `r minGDP`. The maximum GDP is `r maxGDP`.
+```{r table}
+gapminder_1997 %>%
+  filter(continent == "Oceania") %>%
+  kable()
 ```
 
