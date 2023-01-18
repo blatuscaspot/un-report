@@ -1,0 +1,10 @@
+---
+title: "A UN Report on the Relationship between GDP and CO2 Emissions"
+author: "Ben K"
+date: "2023-01-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
